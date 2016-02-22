@@ -12,11 +12,70 @@ import UIKit
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
+      private var reachability:Reachability!;
 
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         // Override point for customization after application launch.
+        
+        NSNotificationCenter.defaultCenter().addObserver(self, selector:"checkForReachability:", name: kReachabilityChangedNotification, object: nil);
+        
+        self.reachability = Reachability.reachabilityForInternetConnection();
+        self.reachability.startNotifier();
+        
+
+        
         return true
+    }
+    
+  
+    
+
+    func checkForReachability (notification: NSNotification)
+    {
+        
+        if let networkReachability = notification.object as? Reachability {
+            let remoteHostStatus = networkReachability.currentReachabilityStatus()
+            
+            if (remoteHostStatus == NotReachable) {
+                let storyboard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+                
+                
+                
+                let vc: OfflineViewController = storyboard.instantiateViewControllerWithIdentifier("OfflineViewController") as! OfflineViewController
+                
+                window!.rootViewController = vc
+                window!.makeKeyAndVisible()
+                
+            }
+            else if (remoteHostStatus == ReachableViaWiFi) {
+                print("Reachable via Wifi")
+                let storyboard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+                
+                
+                
+                let vc: ViewController = storyboard.instantiateViewControllerWithIdentifier("ViewController") as! ViewController
+                
+                window!.rootViewController = vc
+                window!.makeKeyAndVisible()
+            }
+            else {
+                print("Reachable")
+                let storyboard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+                
+                
+                
+                let vc: ViewController = storyboard.instantiateViewControllerWithIdentifier("ViewController") as! ViewController
+                
+                window!.rootViewController = vc
+                window!.makeKeyAndVisible()
+            }
+        }
+        else {
+            print("Unknown")
+        }
+        
+        
     }
 
     func applicationWillResignActive(application: UIApplication) {

@@ -14,6 +14,8 @@
 		FD27B9DB1C7B447000494458 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FD27B9D91C7B447000494458 /* LaunchScreen.storyboard */; };
 		FD27B9E61C7B447000494458 /* ReachabilityTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD27B9E51C7B447000494458 /* ReachabilityTests.swift */; };
 		FD27B9F11C7B447000494458 /* ReachabilityUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD27B9F01C7B447000494458 /* ReachabilityUITests.swift */; };
+		FD27BA011C7B44FB00494458 /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = FD27BA001C7B44FB00494458 /* Reachability.m */; };
+		FD27BA031C7B462400494458 /* OfflineViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD27BA021C7B462400494458 /* OfflineViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -47,6 +49,10 @@
 		FD27B9EC1C7B447000494458 /* ReachabilityUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ReachabilityUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		FD27B9F01C7B447000494458 /* ReachabilityUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReachabilityUITests.swift; sourceTree = "<group>"; };
 		FD27B9F21C7B447000494458 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		FD27B9FE1C7B44FA00494458 /* Reachability-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Reachability-Bridging-Header.h"; sourceTree = "<group>"; };
+		FD27B9FF1C7B44FB00494458 /* Reachability.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Reachability.h; sourceTree = "<group>"; };
+		FD27BA001C7B44FB00494458 /* Reachability.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Reachability.m; sourceTree = "<group>"; };
+		FD27BA021C7B462400494458 /* OfflineViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OfflineViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -98,11 +104,15 @@
 			isa = PBXGroup;
 			children = (
 				FD27B9D01C7B446F00494458 /* AppDelegate.swift */,
+				FD27BA021C7B462400494458 /* OfflineViewController.swift */,
 				FD27B9D21C7B446F00494458 /* ViewController.swift */,
 				FD27B9D41C7B447000494458 /* Main.storyboard */,
 				FD27B9D71C7B447000494458 /* Assets.xcassets */,
 				FD27B9D91C7B447000494458 /* LaunchScreen.storyboard */,
+				FD27B9FF1C7B44FB00494458 /* Reachability.h */,
+				FD27BA001C7B44FB00494458 /* Reachability.m */,
 				FD27B9DC1C7B447000494458 /* Info.plist */,
+				FD27B9FE1C7B44FA00494458 /* Reachability-Bridging-Header.h */,
 			);
 			path = Reachability;
 			sourceTree = "<group>";
@@ -256,7 +266,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FD27BA031C7B462400494458 /* OfflineViewController.swift in Sources */,
 				FD27B9D31C7B446F00494458 /* ViewController.swift in Sources */,
+				FD27BA011C7B44FB00494458 /* Reachability.m in Sources */,
 				FD27B9D11C7B446F00494458 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -397,10 +409,14 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				INFOPLIST_FILE = Reachability/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "Aman-Jain.Reachability";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "Reachability/Reachability-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
 			name = Debug;
 		};
@@ -408,10 +424,13 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				INFOPLIST_FILE = Reachability/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "Aman-Jain.Reachability";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "Reachability/Reachability-Bridging-Header.h";
 			};
 			name = Release;
 		};
@@ -482,6 +501,7 @@
 				FD27B9F71C7B447000494458 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		FD27B9F81C7B447000494458 /* Build configuration list for PBXNativeTarget "ReachabilityTests" */ = {
 			isa = XCConfigurationList;
@@ -490,6 +510,7 @@
 				FD27B9FA1C7B447000494458 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		FD27B9FB1C7B447000494458 /* Build configuration list for PBXNativeTarget "ReachabilityUITests" */ = {
 			isa = XCConfigurationList;
@@ -498,6 +519,7 @@
 				FD27B9FD1C7B447000494458 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
